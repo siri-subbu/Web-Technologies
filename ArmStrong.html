@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Armstrong Number</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            body{
+                margin:0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card{
+                padding: 50px;
+                background-color: rgba(236, 236, 46, 0.6);
+                width: fit-content;
+                text-align: center;
+                margin: 40px;
+                border-radius: 20px;
+            }
+            button{
+                background-color: palegreen;
+                width: 90px;
+                height: 45px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <form>
+                <label for="ip"><b>Enter a number</b></label>
+                <input id="ip" type="text">
+                <br>
+                <br>
+                <button type="button" onclick="Check()">submit</button>
+                <button type="reset" onclick="clearResult()">reset</button>
+                <br>
+                <h3 id="summary"></h3>
+                <h4 id="op"></h4>
+            </form>
+        </div>
+            <script>
+                function Check()
+                {
+                    if((document.getElementById("ip").value).trim()==="")
+                    {
+                        document.getElementById("op").innerText="Enter a valid number!";
+                        return;
+                    }
+                    num=Number(document.getElementById("ip").value);
+                    if(isNaN(num)||num<0)
+                    {
+                        document.getElementById("op").innerText="Enter a valid number!";
+                        return;
+                    }
+                    let n=num;
+                    let rem,res=0;
+                    var sum=0;
+                    let c=0;
+                    while(n!=0)
+                    {
+                        rem=n%10;
+                        n=Math.floor(n/10);
+                        c++;
+                    }
+                    n=num;
+                    while(n!=0)
+                    {
+                        rem=n%10;
+                        let v=c;
+                        let p=1;
+                        while(v>0)
+                        {
+                            p*=rem;
+                            v--;
+                        }
+                        console.log(p)
+                        n=Math.floor(n/10);
+                        sum+=p;
+                    }
+                    console.log(sum);
+                    if(num==sum)
+                        document.getElementById("op").innerText=num+" is an armstrong number";
+                    else
+                        document.getElementById("op").innerText=num+" is not an armstrong number beacuse "+sum+" != "+num;
+                }
+                function clearResult()
+                {
+                    document.getElementById("summary").innerText=""
+                    document.getElementById("op").innerText=""
+                }
+            </script>
+    </body>
+</html>

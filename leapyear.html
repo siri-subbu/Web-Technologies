@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LeapYearChecker</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            body{
+                margin:0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card{
+                padding: 50px;
+                background-color: rgba(236, 236, 46, 0.6);
+                width: fit-content;
+                text-align: center;
+                margin: 40px;
+                border-radius: 20px;
+            }
+            button{
+                background-color: palegreen;
+                width: 90px;
+                height: 45px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <form>
+                <label for="ip"><b>Enter Year</b></label>
+                <input id="ip" type="number">
+                <br>
+                <br>
+                <button type="button" onclick="check()">find</button>
+                <button type="reset" onclick="clearResult()">reset</button>
+                <br>
+                <h3 id="op"></h3>
+            </form>
+        </div>
+            <script>
+                function check()
+                {
+                    let num=Number(document.getElementById("ip").value)
+                    if(isNaN(num)|| num<=0)
+                    {
+                        document.getElementById("op").innerText="Enter a valid year!";
+                        return;
+                    }
+                    if(num%4==0)
+                    {
+                        if(num%100==0)
+                        {
+                            if(num%400==0)
+                            {
+                                document.getElementById("op").innerText=num+" is a Leap Year";
+                            }
+                            else{
+                                document.getElementById("op").innerText=num+" is not a Leap Year";
+                            }
+                        }
+                        if(num%100!=0)
+                        {
+                                document.getElementById("op").innerText=num+" is a Leap Year";
+                        }
+                    }
+                    else{
+                        document.getElementById("op").innerText=num+ " is not a Leap Year";
+                    }
+                }
+                function clearResult()
+                {
+                    document.getElementById("op").innerText=""
+                }
+            </script>
+    </body>
+</html>

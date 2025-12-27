@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>MTech Registration</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .card{
+                margin: 0 auto;
+                padding: 20px;
+                width: 610px;
+                align-content: center;
+                background-color: bisque;
+                border-radius: 30px;
+                align-items: center;
+            }
+            form{
+                margin: 0 auto;
+            }
+            h2{
+                text-align: center;
+            }
+            button{
+                text-align: center;
+                background-color: green;
+                width: 150px;
+                height: 40px;
+                color: azure;
+                font-weight: bolder;
+                border-radius: 20px;
+                border-color: green;
+                margin-left: 230px;
+            }
+            hr{
+                border-color: brown;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h2>Registration</h2>
+            <hr>
+            <form>
+                <table cellspacing="10px">
+                    <tr>
+                        <td><label for="name"><strong>Name</strong></label></td>
+                        <td><label><strong>Gender</strong></label></td>
+                    </tr>
+                    <tr>
+                        <td><input style="width: 200px;" type="text" id="name" name="name" required></td>
+                        <td colspan="2"><label><input type="radio" name="gender">Male</label><label><input type="radio" name="gender">Female</label></td>
+                    </tr>
+                    <tr>&nbsp;</tr>
+                    <tr>
+                        <td><label for="rank"><strong>Gate Rank</strong></label></td>
+                        <td><strong>Highest Degree</strong></td>
+                    </tr>
+                    <tr>
+                        <td><input style="width: 200px;" type="number" id="rank" name="rank" required></td>
+                        <td><label><input type="radio" name="degree">B.Tech/B.E</label><label><input type="radio" name="degree">B.Sc.</label><label><input type="radio" name="degree">BCA</label><label><input type="radio" name="degree">MCA</label><label><input type="radio" name="degree">M.Sc.</label></td>                       
+                    </tr>
+                    <tr>&nbsp;</tr>
+                    <tr>
+                        <td><label for="crse"><strong>Applied Courses</strong></label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select name="crse" id="crse" required>
+                                <option value="">-- Select applied Courses --</option>
+                                <option value="CSE">M.Tech Computer Science</option>
+                                <option value="AI">M.Tech Artificial Intelligence</option>
+                                <option value="DS">M.Tech Data Science</option>
+                                <option value="ECE">M.Tech ECE</option>
+                                <option value="VLSI">M.Tech VLSI</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>&nbsp;</tr>
+                    <tr><td><label><strong>Choose Interests</strong></label></td></tr>
+                    <tr>
+                        <td rowspan="6">
+                            <label>
+                                <input type="checkbox" name="courses">Machine Learning
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="courses">Artificial Intelligence
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="courses">Data Science
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="courses">Computer Networks
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="courses">Cyber Security
+                            </label><br>
+                            <label>
+                                <input type="checkbox" name="courses">VLSI Design
+                            </label><br>
+                        </td>
+                    </tr>
+                </table>
+                <a href="Success.html"><button type="button">Submit</button></a>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Prime Numbers Display</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            body{
+                margin:0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card{
+                padding: 50px;
+                background-color: rgba(236, 236, 46, 0.6);
+                width: fit-content;
+                text-align: center;
+                margin: 40px;
+                border-radius: 20px;
+            }
+            button{
+                background-color: palegreen;
+                width: 90px;
+                height: 45px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <form>
+                <label for="ip"><b>Enter Limit</b></label>
+                <input id="ip" type="number">
+                <br>
+                <br>
+                <button type="button" onclick="check()">submit</button>
+                <button type="reset" onclick="clearResult()">reset</button>
+                <br>
+                <h3 id="summary"></h3>
+                <h4 id="op"></h4>
+            </form>
+        </div>
+            <script>
+                function check()
+                {
+                    
+                    let num=Number(document.getElementById("ip").value)
+                    if(isNaN(num)|| num<2)
+                    {
+                        document.getElementById("op").innerText="Enter a valid number.";
+                        return;
+                    }
+                    let n=2;
+                    let p=[];
+                    while(n<=num)
+                    {
+                        let c=0;
+                        for(let i=2;i*i<=n;i++)
+                        {
+                            if(n%i==0)
+                                c++;
+                            else
+                                continue;
+                        }
+                        if(c==0)
+                            p.push(n);
+                        n++;
+                    }
+                    document.getElementById("summary").innerText="Prime numbers till the given number are:"
+                    document.getElementById("op").innerText=p.join()
+                }
+                function clearResult()
+                {
+                    document.getElementById("summary").innerText=""
+                    document.getElementById("op").innerText=""
+                }
+            </script>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Linear Search</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            body{
+                margin:0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .card{
+                padding: 50px;
+                background-color: rgba(236, 236, 46, 0.6);
+                width: fit-content;
+                text-align: center;
+                margin: 40px;
+                border-radius: 20px;
+            }
+            button{
+                background-color: palegreen;
+                width: 90px;
+                height: 45px;
+                font-weight: bold;
+                border-radius: 15px;
+            }
+            label{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <form>
+                <label for="ip" id="op1"><b>Enter size of array to be created</b></label>
+                <input id="ip" type="number">
+                <br><br>
+                <button type="button" id="b1" onclick="takeSize()">submit</button>
+                <button type="reset" onclick="clearResult()">reset</button>
+                <br>
+                <h3 id="summary"></h3>
+                <h4 id="op"></h4>
+            </form>
+        </div>
+            <script>
+                function takeSize()
+                {
+                    let size=Number(document.getElementById("ip").value);
+                    if(isNaN(size) || size <= 0){
+                        alert("Enter a valid positive number for size");
+                        return;
+                    }
+                    document.getElementById("ip").value=""
+                    clearResult();
+                    document.getElementById("op1").innerText="Enter "+size+" integers separated by ','";
+                    document.getElementById("ip").type="text"
+                    document.getElementById("b1").onclick=function(){takeArray(size)}
+                }
+                function takeArray(size)
+                {
+                    let arr=(document.getElementById("ip").value).split(",").map(Number);
+                    if(arr.some(isNaN)){
+                        alert("Please enter only numbers");
+                        return;
+                    }
+                   let a=[];
+                   if(arr.length!=size){
+                        alert("Please enter exactly " + size + " numbers");
+                        return;
+                   }
+                   else{
+                    a=[...arr];
+                   }
+                   clearResult();
+                   document.getElementById("op1").innerText="Enter search Element to find from numbers given"
+                   document.getElementById("ip").type="number";
+                   document.getElementById("b1").onclick=function(){
+                    let key=Number(document.getElementById("ip").value)
+                    LS(size,a,key)}
+                }
+                function LS(size,arr,key)
+                {
+                    for(var i=0;i<size;i++)
+                    {
+                        if(arr[i]===key)
+                        {
+                            document.getElementById("op").innerText=key+" found at index "+i;
+                            return;
+                        }
+                    }
+                    document.getElementById("op").innerText="Element Not found";
+                }
+                function clearResult()
+                {
+                    document.getElementById("op1").innerText="Enter size of array to be created";
+                    document.getElementById("b1").onclick="takeSize"
+                    document.getElementById("summary").innerText=""
+                    document.getElementById("op").innerText=""
+                    return;
+                }
+            </script>
+    </body>
+</html>

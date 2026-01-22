@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .c{
+                border-radius: 20px;
+                align-content: center;
+                margin: 0 auto;
+                margin-top: 10%;
+                width: 20%;
+                height: 100px;
+                background-color: rgb(243, 243, 177);
+                text-align: center;
+                padding: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="c">
+            <form action="">
+                <label for="mail">Email</label>
+                
+                <input type="text" id="mail" name="mail">
+                <br>
+                <br>
+                <button type="button" onclick="valid()">Submit</button>
+            </form>
+        </div>
+        <script>
+            function valid()
+            {
+                let mail=document.getElementById("mail").value;
+                if(!mail.includes("@"))
+                {
+                    alert("'mail id must have @'");
+                    return;
+                }
+                let c=0;
+                for(let i=0;i<mail.length;i++)
+                {
+                    
+                    if(mail[i]==".")
+                    {
+                        c++;
+                        if(i>0 && mail[i-1]==mail[i])
+                        {
+                            alert("No consecutive dots (..)");
+                            return;
+                        }
+                    }
+                    if(i>0 && mail[i]=="@" && mail[i]==mail[i-1])
+                    {
+                        alert("no consecutive @'s (@@)");
+                        return;
+                    }
+                    if(mail[0] =="." || mail[mail.length-1]=="." || mail[0]=="@" || mail[mail.length-1]=="@")
+                    {
+                        alert("The first and last characters cannot be . or @");
+                    }
+                }
+                if(c<2)
+                    {
+                        alert("There must be atleast 2 dots(.) in mail");
+                        return;
+                    }
+                document.write("Successfully validated");
+            }
+        </script>
+    </body>
+</html>

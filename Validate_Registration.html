@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Valid Registration</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width initial-scale=1.0">
+        <style>
+            .form{
+                margin: auto;
+                margin-top: 5%;
+                padding: 30px;
+                width: 50%;
+                background-color: rgb(191, 247, 251);
+                border-radius: 30px;
+            }
+            td{
+                width: 350px;
+            }
+            input{
+                width: 250px;
+            }
+            button{
+                margin: 30px;
+                margin-left: 170px;
+                margin-bottom: 5px;
+                width: 300px;
+                background-color: green;
+                height: 40px;
+                color: white;
+                font-size: large;
+                border-radius: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form">
+            <form action="">
+                <table cellspacing="5px" cellpadding="5px">
+                    <caption><h1 style="text-align: center;color: red;">Registration</h1>
+                    </caption>
+                    <tr><td colspan="4"><hr></td></tr>
+                    <tr>
+                        <td><label for="name">Name</label></td>
+                        <td><label for="phone">Phone</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="name" id="name"></td>
+                        <td><input type="text" name="phone" id="phone"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="dob">Date of Birth</label></td>
+                        <td><label for="addr">Address</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="dob" placeholder="dd-mm-yyyy" id="dob"></td>
+                        <td><input type="text" name="addr" id="addr"></td>
+                    </tr>
+                    <tr><td><label for="mail">Email</label></td></tr>
+                    <tr><td><input type="text" name="mail" id="mail"></td></tr>
+                    <tr>
+                        <td><label for="pass">Password</label></td>
+                        <td><label for="cpass">Confirm Password</label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="pass" id="pass"></td>
+                        <td><input type="text" name="cpass" id="cpass"></td>
+                    </tr>
+                </table>
+                <table>
+                    <tr><td><button type="button" onclick="val()"><b>submit</b></button></td></tr>
+                </table>
+            </form>
+        </div>
+        <script>
+            function val(){
+                let name=document.getElementById("name").value;
+                if(name.length<7){
+                    alert("Name should not be empty and must contain atlest 7 characters")
+                    return;
+                }
+                for(let i=0;i<name.length;i++)
+                {
+                    if((name.charCodeAt(i)>=65 && name.charCodeAt(i)<=90) 
+                    || (name.charCodeAt(i)>=97 && name.charCodeAt(i)<=122) 
+                    || name.charCodeAt(i)==32)
+                    {
+                        continue;
+                    }
+                    else{
+                        alert("Name contain only alphabets")
+                        return;
+                    }
+                }
+                let pass=document.getElementById("pass").value;
+                if(pass.length<6){
+                    alert("Password length must be atleast 6 characters");
+                    return;
+                }
+                let cpass=document.getElementById("cpass").value;
+                if(cpass.length<6)
+                {
+                    alert("Confirmation of password is mandatory!")
+                    return;
+                }
+                if(pass!==cpass)
+                {
+                    alert("Passwords must match");
+                    return;
+                }
+                let mail=document.getElementById("mail").value;
+                if(mail.includes("@"))
+                {
+                    if(!mail.endsWith(".com"))
+                    {
+                        alert("email must end with '.com'")
+                        return;
+                    }
+                    if(mail.indexOf(".com")-mail.indexOf("@")<5)
+                    {
+                        alert("Choose a proper domain name in email")
+                        return;
+                    }
+                }
+                else{
+                    alert("Enter correct mail id")
+                    return;
+                }
+                if(mail.indexOf("@")<1)
+                {
+                    alert("email should start with name instead of @")
+                    return;
+                }
+                let phone=document.getElementById("phone").value;
+                if(phone.length<10 || phone.length>10)
+                {
+                    alert("Phone number should have 10 digits")
+                    return;
+                }
+                for(let i=0;i<phone.length;i++)
+                {
+                    if(phone.charCodeAt(i)<48 || phone.charCodeAt(i)>57)
+                    {
+                        alert("phone number should only contain digits")
+                        return;
+                    }
+                }
+                let date=document.getElementById("dob").value;
+                if(date.length==0)
+                {
+                    alert("Date field should not be empty")
+                    return;
+                }
+                if(date.length!==10)
+                {
+                    alert("Date format mismatch");
+                    return;
+                }
+                for(let i=0;i<10;i++)
+                {
+                    if((i==2 || i==5) && date[i]!="-")
+                    {
+                        alert("Date format mismatch");
+                        return;
+                    }
+                }
+                if(Number(date.substring(0,2))>31)
+                {
+                    alert("Invalid date");
+                    return;
+                }
+                if(Number(date.substring(3,5))>12)
+                {
+                    alert("Invalid month");
+                    return;
+                }
+                if(Number(date.substring(6))>2025)
+                {
+                    alert("Invalid year");
+                    return;
+                }
+                if((document.getElementById("addr").value).length==0)
+                {
+                    alert("Address should not be empty");
+                    return;
+                }
+                window.open("Success.html", "_blank"); // Opens in a new tab
+            }
+        </script>
+    </body>
+</html>
